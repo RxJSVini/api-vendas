@@ -8,7 +8,6 @@ export const routes = express.Router();
 routes.use('/products', productsRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
-
 routes.get('/ping', (req, res) =>{
 	return res.send('ok');
 });
