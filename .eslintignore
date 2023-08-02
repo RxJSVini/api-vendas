@@ -1,0 +1,35 @@
+# Ignorar todos os arquivos na pasta node_modules
+node_modules/
+
+# Ignorar todos os arquivos na pasta dist ou build
+dist/
+build/
+
+# Ignorar arquivos gerados por bundlers como webpack ou Parcel
+*.bundle.js
+*.bundle.css
+
+# Ignorar arquivos gerados pelo TypeScript
+*.js
+*.d.ts
+
+# Ignorar arquivos de teste
+**/__tests__/
+**/*.test.js
+
+# Ignorar arquivos de configuração
+.eslint*
+.prettier*
+babel.config.js
+webpack.config.js
+
+# Ignorar arquivos de dados estáticos ou recursos
+public/
+
+# Ignorar arquivos gerados automaticamente
+*.generated.js
+*.generated.css
+
+# Ignorar arquivos gerados por ferramentas de scaffolding
+src/*.generated.*
+src/*.mock.*
