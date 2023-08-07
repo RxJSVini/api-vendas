@@ -3,7 +3,7 @@
 	"host": "localhost",
 	"port": 5432,
 	"username": "admin_vendas",
-	"password": "jXdGly#*55?2N07HO",
+	"password": "minhasenha",
 	"database": "api_vendas",
 	"entities":["./src/modules/**/entities/*.ts"],
 	"migrations":[

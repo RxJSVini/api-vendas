@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { UserToken } from '../entities/UserTokens';
+import { UserToken } from '../entities/UserTokens.jsx';
 
 @EntityRepository(UserToken)
 

@@ -13,7 +13,7 @@ export  class SessionsController {
 				email,
 				password,
 			});
-			console.log(user ? true: false);
+
 			return res.json(user);
 		} catch (error) {
 			return res.json(error);
