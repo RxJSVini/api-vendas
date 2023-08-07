@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-
+//https://ethereal.email/
 
 interface ISendMail {
   to: string;
