@@ -33,7 +33,7 @@ export class SendForgotPasswordEmailService {
 			subject:'[ API Vendas ] Reperação de Senha',
 
 			templateData:{
-				template: `Solicitação de redefinição de senha recebida: ${token}`,
+				template: 'Olá {{ name }},  Solicitação de redefinição de senha recebida: {{ token }}',
 				variables:{
 					name: user.name,
 					token: token
