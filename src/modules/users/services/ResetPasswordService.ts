@@ -1,4 +1,4 @@
-import AppError from '@shared/errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import { addHours, isAfter } from 'date-fns';
 import { UserRepository } from '../typeorm/repositories/UserRepository';

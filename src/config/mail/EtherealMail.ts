@@ -13,7 +13,7 @@ interface ITemplateVariable {
 }
 
 interface IParseMailtemplate {
-  template: string;
+  file: string;
   variables: ITemplateVariable;
 }
 

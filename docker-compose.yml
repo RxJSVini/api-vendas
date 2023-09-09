@@ -1,0 +1,13 @@
+# version: '3'  # Use a versão 3 do formato Docker Compose
+
+# services:
+#   api:
+#     build: .
+#     ports:
+#       - "3333:3333"
+#   db:
+#     build:
+#       context: ./database
+# 	  dockerfile: DOck
+#     ports:
+#       - "5432:5432" 

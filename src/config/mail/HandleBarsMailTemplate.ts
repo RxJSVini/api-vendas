@@ -1,19 +1,24 @@
 import handlebars from 'handlebars';
-
+import { readFile } from '@shared/utils/read-file';
 interface ITemplateVariable {
 	[key: string ] : string | number; 
 }
 
 interface IParseMailtemplate {
-	template:string;
+	file:string;
 	variables:ITemplateVariable;
 }
 
+
+
 export class HandlebarsMailTemplate {
-	public async parse({template, variables}:IParseMailtemplate ):Promise<string>{
+	public async parse({ file , variables}:IParseMailtemplate ):Promise<string>{
 
-		const parseTemplate = handlebars.compile(template);
-
+		const templateFileContent = await readFile(
+			file,
+			{encoding: 'utf-8'}	
+		);
+		const parseTemplate = handlebars.compile(templateFileContent);
 
 		return parseTemplate(variables);
 	}

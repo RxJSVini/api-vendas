@@ -2,7 +2,7 @@
 	"type": "postgres",
 	"host": "localhost",
 	"port": 5432,
-	"username": "admin_vendas",
+	"username": "api_vendas",
 	"password": "minhasenha",
 	"database": "api_vendas",
 	"entities":["./src/modules/**/entities/*.ts"],
