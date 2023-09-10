@@ -1,0 +1,19 @@
+FROM node:16 as builder
+
+WORKDIR /app/build
+
+COPY ormconfig.json .
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+FROM node:16.5.0-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/build /app/
+
+RUN npm install
