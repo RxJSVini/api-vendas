@@ -2,8 +2,8 @@
 	"type": "postgres",
 	"host": "localhost",
 	"port": 5432,
-	"username": "api_vendas",
-	"password": "minhasenha",
+	"username": "admin",
+	"password": "1D5s6d1s51@521",
 	"database": "api_vendas",
 	"entities":["./src/modules/**/entities/*.ts"],
 	"migrations":[

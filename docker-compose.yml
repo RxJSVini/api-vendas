@@ -1,22 +1,12 @@
-version: '3.9'
+version: '3.8'  # Atualizado para uma versão mais recente
 services:
-  database:
-    container_name: database_api_vendas
-    build:
-      context: postgres
-      dockerfile: Dockerfile
+  postgres:
+    container_name: postgres_container
+    image: postgres
     environment:
-      POSTGRES_USER: vendas 
-      POSTGRES_PASSWORD: vendas@123!#
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1D5s6d1s51@521
+    volumes:
+      - ./src/shared/typeorm/scripts:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
-  api:
-
-    container_name: api_vendas
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3333:3333"
-    depends_on:
-      - database
