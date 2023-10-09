@@ -1,4 +1,4 @@
-version: '3.8'  # Atualizado para uma versão mais recente
+version: '3.8'  
 services:
   postgres:
     container_name: postgres_container
