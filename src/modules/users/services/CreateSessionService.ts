@@ -22,31 +22,31 @@ interface IResponse {
 
 
 export class CreateSessionService {
-	public async execute({ email, password }: IRequest): Promise<IResponse |  unknown> {
-		try {
-			const usersRepository = getCustomRepository(UserRepository);
-			const user = await usersRepository.findByEmail(email);
+    public async execute({ email, password }: IRequest): Promise<IResponse |  unknown> {
+        try {
+            const usersRepository = getCustomRepository(UserRepository);
+            const user = await usersRepository.findByEmail(email);
 
-			if (!user) {
-				throw new AppError('Incorrect email/password combination.', 401);
-			}
+            if (!user) {
+                throw new AppError('Incorrect email/password combination.', 401);
+            }
 
-			const passwordVerify = await compare(password, user.password);
+            const passwordVerify = await compare(password, user.password);
 
-			if (!passwordVerify) {
-				throw new AppError('Incorrect email/password combination.', 401);
-			}
+            if (!passwordVerify) {
+                throw new AppError('Incorrect email/password combination.', 401);
+            }
 
-			const token = sign({}, jwtConfig.secret, {
-				expiresIn: jwtConfig.expiresIn,
-			});
-
-
-			return { user, token } as IResponse;
+            const token = sign({}, jwtConfig.secret, {
+                expiresIn: jwtConfig.expiresIn,
+            });
 
 
-		} catch (error) {
-			return error;
-		}
-	}
+            return { user, token } as IResponse;
+
+
+        } catch (error) {
+            return error;
+        }
+    }
 }

@@ -13,22 +13,22 @@ const usersController = new UserControler();
 const upload = multer(uploads);
 
 usersRouter.post(
-	'/',
-	celebrate({
-		[Segments.BODY]: {
-			name: Joi.string().required(),
-			email: Joi.string().email().required(),
-			password: Joi.string().required(),
-		},
-	}),
-	usersController.create,
+    '/',
+    celebrate({
+        [Segments.BODY]: {
+            name: Joi.string().required(),
+            email: Joi.string().email().required(),
+            password: Joi.string().required(),
+        },
+    }),
+    usersController.create,
 );
 
 usersRouter.patch(
-	'/avatar',
-	isAuthenticated,
-	upload.single('avatar'),
-	usersAvatarController.update,
+    '/avatar',
+    isAuthenticated,
+    upload.single('avatar'),
+    usersAvatarController.update,
 );
 
 usersRouter.get('/', isAuthenticated, usersController.index);

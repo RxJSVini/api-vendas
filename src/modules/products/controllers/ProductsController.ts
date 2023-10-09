@@ -7,58 +7,58 @@ import { CreateProductService } from '../services/CreateProductService';
 import { DeleteProductService } from '../services/DeleteProductService';
 
 export class ProductsControler {
-	public async index(req: Request, res: Response) {
-		const listProducts = new ListProductService();
+    public async index(req: Request, res: Response) {
+        const listProducts = new ListProductService();
 
-		const products = await listProducts.execute();
+        const products = await listProducts.execute();
 
-		return res.status(200).json(products);
-	}
+        return res.status(200).json(products);
+    }
 
-	public async show(req: Request, res: Response): Promise<Response> {
-		const { id } = req.params;
+    public async show(req: Request, res: Response): Promise<Response> {
+        const { id } = req.params;
 
-		const showProduct = new ShowProductService();
-		const product = await showProduct.execute({ id });
+        const showProduct = new ShowProductService();
+        const product = await showProduct.execute({ id });
 
-		return res.status(200).json(product);
-	}
+        return res.status(200).json(product);
+    }
 
-	public async create(req: Request, res: Response): Promise<Response> {
-		const { name, price, quantity } = req.body;
-		const createProduct = new CreateProductService();
-		const product = await createProduct.execute({
-			name,
-			price,
-			quantity,
-		});
+    public async create(req: Request, res: Response): Promise<Response> {
+        const { name, price, quantity } = req.body;
+        const createProduct = new CreateProductService();
+        const product = await createProduct.execute({
+            name,
+            price,
+            quantity,
+        });
 
-		return res.status(201).json(product);
-	}
+        return res.status(201).json(product);
+    }
 
-	public async update(req: Request, res: Response): Promise<Response> {
-		const { name, price, quantity }: Product = req.body;
-		const { id } = req.params;
+    public async update(req: Request, res: Response): Promise<Response> {
+        const { name, price, quantity }: Product = req.body;
+        const { id } = req.params;
 
-		const updateProduct = new UpdateProductService();
+        const updateProduct = new UpdateProductService();
 
-		const product = await updateProduct.execute({
-			id,
-			name,
-			price,
-			quantity,
-		});
+        const product = await updateProduct.execute({
+            id,
+            name,
+            price,
+            quantity,
+        });
 
-		return res.status(200).json(product);
-	}
+        return res.status(200).json(product);
+    }
 
-	public async delete(req: Request, res: Response): Promise<Response> {
-		const { id } = req.params;
+    public async delete(req: Request, res: Response): Promise<Response> {
+        const { id } = req.params;
 
-		const deleteProduct = new DeleteProductService();
+        const deleteProduct = new DeleteProductService();
 
-		await deleteProduct.execute({ id });
+        await deleteProduct.execute({ id });
 
-		return res.end();
-	}
+        return res.end();
+    }
 }

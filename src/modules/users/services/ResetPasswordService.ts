@@ -12,34 +12,34 @@ interface IRequest {
 }
 
 export class ResetPasswordService  {
-	public async execute({  token, password  }: IRequest): Promise<void> {
-		const usersRepository = getCustomRepository(UserRepository);
-		const userTokensRepository = getCustomRepository(UserTokenRepository);
+    public async execute({  token, password  }: IRequest): Promise<void> {
+        const usersRepository = getCustomRepository(UserRepository);
+        const userTokensRepository = getCustomRepository(UserTokenRepository);
 
-		const userToken = await userTokensRepository.findByToken(token);
+        const userToken = await userTokensRepository.findByToken(token);
 
-		if (!userToken) {
-			throw new AppError('User does not exists');
-		}
+        if (!userToken) {
+            throw new AppError('User does not exists');
+        }
 
-		const user = await usersRepository.findById(userToken.user_id);
+        const user = await usersRepository.findById(userToken.user_id);
 		
-		if(!user){
-			throw new AppError('User does not exists.');
-		}
+        if(!user){
+            throw new AppError('User does not exists.');
+        }
 
-		const tokenCreatedAt = userToken.created_at;
+        const tokenCreatedAt = userToken.created_at;
 
-		const compareDate = addHours(tokenCreatedAt, 2);
+        const compareDate = addHours(tokenCreatedAt, 2);
 
-		if(isAfter(Date.now(), compareDate)){
-			throw new AppError('Token Expirado.');
-		}
+        if(isAfter(Date.now(), compareDate)){
+            throw new AppError('Token Expirado.');
+        }
 
 
-		user.password = await hash(password, 8);
+        user.password = await hash(password, 8);
 
-		await usersRepository.save(user);
+        await usersRepository.save(user);
 
-	}
+    }
 }
